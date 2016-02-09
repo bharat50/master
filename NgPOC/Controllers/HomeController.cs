@@ -11,6 +11,7 @@ namespace NgPOC.Controllers
         public ActionResult Index()
         {
             // changes in master branch 
+            // changes done in branch 1
             ViewBag.Title = "Home Page";
            
             return View();
