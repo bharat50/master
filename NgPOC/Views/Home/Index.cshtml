@@ -1,0 +1,112 @@
+﻿
+<head>
+    <title>Employees</title>
+</head>
+<div ng-app="EmployeeModule">
+    <div>
+        
+    </div>
+    <div ng-controller="EmployeeController" ng-init="GetDataFromDB()">
+        <input type="button" value="Add New" class="btn btn-default" ng-click="showdiv()" />        
+         
+        <div>
+
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th style="visibility:hidden">Id</th>
+                        <td></td>
+                        <th>
+                            Select
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortType = 'Name';sortReverse = !sortReverse">
+                                Name
+                                <span ng-show="sortType == 'Name'"></span>
+                            </a>
+                            <input type="text" ng-model="Name">
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortType = 'City' ;sortReverse = !sortReverse">
+                                City
+                                <span ng-show="sortType == 'City'"></span>
+                            </a>
+                            <input type="text" ng-model="City">
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortType = 'Addres';sortReverse = !sortReverse">
+                                Address
+                                <span ng-show="sortType == 'Address'"></span>
+                            </a>
+                            <input type="text" ng-model="Address">
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortType = 'PinCode';sortReverse = !sortReverse">
+                                Pincode
+                                <span ng-show="sortType == 'PinCode'"></span>
+                            </a>
+                            <input type="text" ng-model="PinCode">
+                        </th>
+                        <th>
+                            <a href="#" ng-click="sortType = 'DOB';sortReverse = !sortReverse">
+                                DOB
+                                <span ng-show="sortType == 'DOB'"></span>
+                            </a>
+                            <input type="text" ng-model="DOB" /><br />
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="em in employeedata  | filter:{Name:Name} | filter:{City:City} | filter:{Address:Address}|filter:{PinCode:PinCode} |filter:{DOB:DOB} | orderBy:sortType:sortReverse">
+                        <td style="visibility:hidden">{{em.Id}}</td>
+                        <td>
+                            <input type="submit" value="Update" ng-show="ShowButton($index+1)" class="btn btn-default" ng-click="UpdateEmp(em.Id)" />
+                            <input type="submit" value="Delete" ng-show="ShowButton($index+1)" class="btn btn-default" ng-click="DeleteEmp(em.Id)" />
+                        </td>
+                        <th>
+                            <input type="radio" ng-model="value" name="rbtnGrid" value="{{$index+1}}" ng-click="ChkClick(em.Id,value)">
+                            @*<input type="checkbox" ng-model="chkvisibilty" ng-click="ChkClick(em.Id,chkvisibilty)">*@
+                        </th>
+                        <td>{{em.Name }}</td>
+                        <td>{{em.City}}</td>
+                        <td>{{em.Address}}</td>
+                        <td>{{em.PinCode}}</td>
+                        <td>{{em.DOB | date : 'dd/MM/yyyy' }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            @*<div class="box" ng-click="showMe($event)">
+                    <p>1fdyiotug u rtuier</p>
+                </div>*@
+
+            <div ng-show="itemshow">
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <td></td>
+                        <td></td>
+
+                        <td><input type="text" placeholder="Enter Name" ng-model="empName" /> </td>
+                        <td><input type="text" placeholder="Enter City" ng-model="empCity" /></td>
+                        <td><input type="text" placeholder="Enter Address" ng-model="empAddress" multiple /></td>
+                        <td><input type="number" placeholder="Pincode" ng-model="empPincode" /></td>
+                        <td><input type="datetime" placeholder="Date of birth" ng-model="empDOB" /></td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="submit" value="Save Data" ng-click="SaveData()" class="btn btn-default" />
+                            <input type="button" value="Cancel" ng-click="CancelNew()" class="btn btn-default" />
+                        </td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/CustomJS/angular.js"></script>
+    <script src="~/Scripts/CustomJS/Employee.js"></script>
+
+</div>
