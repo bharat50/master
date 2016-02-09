@@ -10,7 +10,7 @@ namespace NgPOC.Controllers
     {
         public ActionResult Index()
         {
-         
+            //test
             ViewBag.Title = "Home Page";
             return View();
         }
