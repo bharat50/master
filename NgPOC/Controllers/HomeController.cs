@@ -10,10 +10,7 @@ namespace NgPOC.Controllers
     {
         public ActionResult Index()
         {
-            // changes in master branch 
-            // changes done in branch 1
-            //// changes done in branch  from repo
-            // new remote branch creation 
+            // deleteing all comments from repo in master
             ViewBag.Title = "Home Page";
            
             return View();
