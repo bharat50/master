@@ -10,9 +10,8 @@ namespace NgPOC.Controllers
     {
         public ActionResult Index()
         {
-         
-            ViewBag.Title = "Home Page";
-           
+         // merge 
+            ViewBag.Title = "Home Page";           
             return View();
         }
     }
